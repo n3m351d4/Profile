@@ -1141,11 +1141,11 @@
             const spiralParticles = [];
             const particleCount = 400;
             
-            // Create FIRST spiral (green/cyan ONLY ZEROS)
+            // Create FIRST spiral (green/cyan ZEROS AND ONES)
             for (let i = 0; i < particleCount; i++) {
                 spiralParticles.push({
                     angle: (i / particleCount) * Math.PI * 8,
-                    digit: '0', // ONLY zeros for green/cyan spiral
+                    digit: Math.random() > 0.5 ? '0' : '1', // BOTH zeros and ones for green/cyan spiral
                     size: Math.random() * 20 + 15,
                     speed: 0.02,
                     opacity: Math.random() * 0.8 + 0.2,
