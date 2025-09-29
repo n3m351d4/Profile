@@ -1234,6 +1234,9 @@
                     if (particle.angle > Math.PI * 8) {
                         particle.angle = 0;
                     }
+                    if (particle.angle < 0) {
+                        particle.angle = Math.PI * 8;
+                    }
                     
                     // HORIZONTAL SPIRAL mathematics - across the width
                     const startX = 0;
