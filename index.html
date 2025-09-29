@@ -343,8 +343,8 @@
         /* Grid Layout */
         .modern-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 1.5rem 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem 1.5rem;
             margin-bottom: 30px;
             padding: 2rem 0;
 
@@ -1059,6 +1059,12 @@
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
+            
+            // Update canvas size for spirals
+            if (window.spiralCanvas) {
+                window.spiralCanvas.width = window.innerWidth;
+                window.spiralCanvas.height = window.innerHeight;
+            }
         }
 
         // Initialize horizontal spirals (NO flying digits)
@@ -1066,8 +1072,8 @@
             console.log('Creating clean horizontal binary spirals...');
             
             const canvas = document.createElement('canvas');
-            canvas.width = 1600;
-            canvas.height = 1000;
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
             const ctx = canvas.getContext('2d');
             
             // Clean spiral particles ONLY
@@ -1225,6 +1231,9 @@
                 
                 requestAnimationFrame(animateParticles);
             }
+            
+            // Store canvas reference for resize
+            window.spiralCanvas = canvas;
             
             // Replace particles container
             const particlesContainer = document.getElementById('particles-js');
