@@ -1139,7 +1139,7 @@
             
             // Clean spiral particles ONLY
             const spiralParticles = [];
-            const particleCount = 300;
+            const particleCount = 400;
             
             // Create FIRST spiral (green/cyan ONLY ZEROS)
             for (let i = 0; i < particleCount; i++) {
@@ -1159,7 +1159,7 @@
                     angle: (i / particleCount) * Math.PI * 8,
                     digit: '1', // ONLY ones for red/pink spiral
                     size: Math.random() * 20 + 15,
-                    speed: 0.02, // POSITIVE speed for same direction
+                    speed: -0.02, // NEGATIVE speed for reverse direction
                     opacity: Math.random() * 0.8 + 0.2,
                     color: Math.random() > 0.5 ? '#ff0080' : '#ff0000',
                     pulsePhase: i * 0.1,
